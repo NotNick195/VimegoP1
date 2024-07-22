@@ -1,0 +1,24 @@
+version: '3'
+services:
+  consul:
+    image: consul
+    ports:
+      - '8500:8500'
+  service-a:
+    build: ./service-a
+    environment:
+      - SERVICE_NAME=service-a
+  service-b:
+    build: ./service-b
+    environment:
+      - SERVICE_NAME=service-b
+  service-c:
+    build: ./service-c
+    environment:
+      - SERVICE_NAME=service-c
+  gateway:
+    build: ./gateway
+    depends_on:
+      - service-a
+      - service-b
+      - service-c
