@@ -4,44 +4,34 @@ services:
     image: hashicorp/consul
     ports:
       - '8500:8500'
+
   service-a:
     build: ./service-a
-    environment:
-      - SERVICE_NAME=service-a
-      - SERVICE_ID=service-a-1
-      - SERVICE_PORT=3001
     ports:
       - '3001:3001'
-    depends_on:
-      - consul
+    environment:
+      - SERVICE_NAME=service-a
+
   service-b:
     build: ./service-b
-    environment:
-      - SERVICE_NAME=service-b
-      - SERVICE_ID=service-b-1
-      - SERVICE_PORT=3002
     ports:
       - '3002:3002'
-    depends_on:
-      - consul
-      - service-a
+    environment:
+      - SERVICE_NAME=service-b
+
   service-c:
     build: ./service-c
-    environment:
-      - SERVICE_NAME=service-c
-      - SERVICE_ID=service-c-1
-      - SERVICE_PORT=3003
     ports:
       - '3003:3003'
-    depends_on:
-      - consul
-      - service-a
+    environment:
+      - SERVICE_NAME=service-c
+
   gateway:
     build: ./gateway
     ports:
       - '8080:8080'
     depends_on:
-      - consul
       - service-a
       - service-b
       - service-c
+
