@@ -1,0 +1,22 @@
+http:
+  port: 8080
+
+serviceEndpoints:
+  serviceA_v1:
+    url: 'http://service-a:3001/v1'
+  serviceA_v2:
+    url: 'http://service-a:3001/v2'
+  serviceB:
+    url: 'http://service-b:3002'
+  serviceC:
+    url: 'http://service-c:3003'
+
+policies:
+  - proxy
+
+pipelines:
+  default:
+    policies:
+      - proxy:
+          - action:
+              serviceEndpoint: serviceA_v1
