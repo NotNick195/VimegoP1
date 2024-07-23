@@ -4,6 +4,6 @@ db:
     port: 6379
     namespace: express-gateway
   auth:
-    secret: 'testingthisone'
+    secret: testingthisone
   accessTokens:
     timeToExpiry: 7200
