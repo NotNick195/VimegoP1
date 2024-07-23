@@ -1,0 +1,9 @@
+db: 
+  redis:
+    host: redis
+    port: 6379
+    namespace: express-gateway
+  auth:
+    secret: 'testingthisone'
+  accessTokens:
+    timeToExpiry: 7200
