@@ -1,8 +1,0 @@
-user:
-  properties:
-    username: { type: 'string', $id: '/properties/username' }
-    firstname: { type: 'string', $id: '/properties/firstname' }
-    lastname: { type: 'string', $id: '/properties/lastname' }
-  required: [ username, firstname, lastname ]
-  $id: 'http://express-gateway.io/models/user'
-  type: object

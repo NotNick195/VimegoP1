@@ -4,34 +4,47 @@ services:
     image: hashicorp/consul
     ports:
       - '8500:8500'
+    command: "agent -dev -client=0.0.0.0"
 
   service-a:
     build: ./service-a
     ports:
-      - '3001:3001'
+      - "3001:3001"
     environment:
       - SERVICE_NAME=service-a
+      - SERVICE_TAGS=urlprefix-/v1,urlprefix-/v2
+    depends_on:
+      - consul
+    command: >
+      sh -c "consul agent -dev -client=0.0.0.0 & node index.js"
 
   service-b:
     build: ./service-b
     ports:
-      - '3002:3002'
+      - "3002:3002"
     environment:
       - SERVICE_NAME=service-b
+    depends_on:
+      - consul
+    command: >
+      sh -c "consul agent -dev -client=0.0.0.0 & node index.js"
 
   service-c:
     build: ./service-c
     ports:
-      - '3003:3003'
+      - "3003:3003"
     environment:
       - SERVICE_NAME=service-c
+    depends_on:
+      - consul
+    command: >
+      sh -c "consul agent -dev -client=0.0.0.0 & node index.js"
 
   gateway:
     build: ./gateway
     ports:
-      - '8080:8080'
+      - "8080:8080"
     depends_on:
       - service-a
       - service-b
       - service-c
-

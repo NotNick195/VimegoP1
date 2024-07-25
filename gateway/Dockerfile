@@ -1,7 +1,6 @@
 FROM node:14
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
+WORKDIR /usr/src/app
+RUN npm install -g express-gateway
+COPY ./config ./config
 EXPOSE 8080
-CMD ["node", "start-gateway.js"]
+CMD ["eg", "gateway", "start"]

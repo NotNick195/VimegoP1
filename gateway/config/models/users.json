@@ -1,28 +1,4 @@
-[
-  {
-    "id": "1",
-    "name": "John Doe",
-    "email": "johndoe@example.com",
-    "favorites": [ "rock", "jazz" ],
-    "history": [ "song1", "song2" ],
-    "address": {
-      "email": "johndoe@example.com",
-      "physical": "123 Main St, Anytown, USA",
-      "name": "John Doe",
-      "phone": "555-555-5555"
-    }
-  },
-  {
-    "id": "2",
-    "name": "Jane Smith",
-    "email": "janesmith@example.com",
-    "favorites": [ "pop", "classical" ],
-    "history": [ "song3", "song4" ],
-    "address": {
-      "email": "janesmith@example.com",
-      "physical": "456 Elm St, Othertown, USA",
-      "name": "Jane Smith",
-      "phone": "555-555-5556"
-    }
-  }
-]
+{
+  "username": "admin",
+  "password": "admin"
+}

@@ -1,21 +1,29 @@
+$schema: "http://express-gateway.io/schemas/gateway.schema.json"
+$id: "https://express-gateway.io/schemas/gateway.config.json"
 http:
   port: 8080
 
+apiEndpoints:
+  api:
+    host: "*"
+
 serviceEndpoints:
   serviceA_v1:
-    url: 'http://service-a:3001/v1'
+    url: "http://service-a:3001/v1"
   serviceA_v2:
-    url: 'http://service-a:3001/v2'
+    url: "http://service-a:3001/v2"
   serviceB:
-    url: 'http://service-b:3002'
+    url: "http://service-b:3002"
   serviceC:
-    url: 'http://service-c:3003'
+    url: "http://service-c:3003"
 
 policies:
   - proxy
 
 pipelines:
   default:
+    apiEndpoints:
+      - api
     policies:
       - proxy:
           - action:
