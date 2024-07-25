@@ -1,30 +1,31 @@
 # Music Platform Microservices
 
 ## Overview
-This project demonstrates a microservices architecture with an API Gateway and service discovery. It includes three services:
-- User Profile Service (Service A)
-- Playlist Recommendation Service (Service B)
-- Subscription Service (Service C)
 
-## Architecture
-- **API Gateway**: Routes requests to appropriate services and handles versioning.
-- **Service Discovery**: Consul is used for dynamic service discovery.
-- **Microservices**: Each service is implemented using Express.js.
+This proof of concept demonstrates a microservices architecture with an API Gateway to reduce maintenance turnaround time and prevent mistakes during transitions.
 
-## Setup
+## Services
 
-### Prerequisites
-- Docker
-- Node.js
+1. **Service A (User Profile Service)**: Manages user profiles.
+2. **Service B (Playlist Recommendation Service)**: Generates playlist recommendations.
+3. **Service C (Subscription Service)**: Provides billing information.
 
-### Running the Services
-1. Clone the repository.
-2. Run `docker-compose up` to start the services.
+## API Gateway
 
-## Future Improvements
-- Implement authentication and authorization.
-- Enhance monitoring and logging.
-- Introduce caching for frequently accessed data.
+The API Gateway routes requests to the appropriate services and provides a layer of abstraction.
 
-## Conclusion
-This architecture allows for easier maintenance and versioning of APIs, reducing the impact of changes on dependent services.
+## Running the Services
+
+1. Navigate to each service directory (`api-gateway`, `service-a`, `service-b`, `service-c`).
+2. Run `npm install` to install dependencies.
+3. Start each service by running `node server.js`.
+4. Access the services via the API Gateway:
+   - User Profile: `http://localhost:3000/service-a/user-profile`
+   - Recommendations: `http://localhost:3000/service-b/recommendations`
+   - Billing Info: `http://localhost:3000/service-c/billing-info`
+
+## Advantages
+
+- **Isolation**: Changes in Service A do not directly affect Services B and C.
+- **Scalability**: Each service can be scaled independently.
+- **Flexibility**: Easily add new services without modifying existing ones.
